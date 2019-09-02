@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% load mathfilters %}
+{% load custom_tags %}
+{%load static%}
+
+{% block content %}
+<style>
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+ <div class="content-wrapper-hp">
+
+<div class="content-limiter">
+
+<div class="slider">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+             {% with video=video_list.0 %}
+
+            <div class="carousel-item active">
+
+
+
+
+
+
+
+            </div>
+            </a>
+            {%endwith%}
+
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+<img class="loaderImage" src="/static/assets/images/ajax-loader.gif" style="height: 50px;position: absolute;top: 50%;left: 50%;">
+
+
+
+
+{% endblock content %}
+{%block paging%}
+
+
+
+     <script>
+
+
+$(document).ready(function () {
+    var image = $(this).find(".loaderImage")
+    image.show()
+
+    var video_id ="{{meta.videoId}}"
+     console.log("{{meta.videoId}}")
+    $.ajax({
+        url: "{% url 'download_youtube' %}" + "?download=" +video_id,
+        dataType: 'json',
+        success: function(data) {
+
+            const proxyurl = "https://cors-anywhere.herokuapp.com/";
+            const url = data.filename
+
+
+            // audioFileUrl = proxyurl + url
+
+            //     var a = document.createElement("a")
+            //     a.href = url;
+            //     a.src=url;
+            //     // a. width="320";
+            //     // a.height="240";
+            //     a.controls="";
+            //     a.setAttribute("controls","");
+            //     a.type="video/ogg";
+            //     a.setAttribute("data-lity","");
+            //     document.body.appendChild(a);
+
+            //     a.click();
+
+                image.hide()
+        }
+        ,
+  error: function(xhr, status, error) {
+     console.log(error)
+      image.hide()
+  },
+
+    });
+
+});
+
+//   a= document.getElementById('vid').click()
+
+    </script>
+{%endblock%}
+
+

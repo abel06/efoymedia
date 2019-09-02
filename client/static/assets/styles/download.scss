@@ -1,0 +1,11 @@
+    .download-cl{
+            color: #fff;
+            background: $bgDefault;
+            border-radius: 4px;
+            text-align: center;
+            cursor:pointer;
+            &:hover {
+                background: #000000;
+            }
+
+        }

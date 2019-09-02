@@ -1,0 +1,201 @@
+    {% load mathfilters %}
+    {%block slider%}
+
+
+    <div class="slider">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for top_video in tops_of_the_week %}
+
+                {%if top_video == tops_of_the_week.0%}
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+                {%else%}
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"></li>
+                {%endif%}
+            {%endfor%}
+        </ol>
+
+          <div class="carousel-inner">
+                {% for top_video in tops_of_the_week %}
+                    {% with video=top_video.data %}
+                        {%if top_video == tops_of_the_week.0%}
+                            <div class="carousel-item active">
+
+                                <a class="vid" value="{{video.videoId}}" style="cursor:pointer;">
+                                    {% if device_type == "mobile" %}
+                                            <picture>
+                                        <source src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://demo.cloudimg.io/bound/280x280/q80/{{ video.thumbnailsHigh}} 1x,
+                                                https://demo.cloudimg.io/crop/600x135/q80/{{ video.thumbnailsHigh}} 1.5x,
+                                                https://demo.cloudimg.io/bound/800x180/q80/{{ video.thumbnailsHigh}} 2x,
+                                                https://demo.cloudimg.io/bound/1200x270/q80/{{ video.thumbnailsHigh}} 3x"
+                                                media="(max-width: 576px)">
+                                                <img class="slider-img-src" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="  data-src="{{ video.thumbnailsHigh}}" class="card-img-top" alt="...">
+                                        </picture>
+                                    {%else%}
+                                        <!--<img src="https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg" class="d-block w-100">-->
+
+                            <picture>
+                                <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://demo.cloudimg.io/bound/280x280/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1x,
+                                                https://demo.cloudimg.io/crop/600x135/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1.5x,
+                                                https://demo.cloudimg.io/bound/800x180/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 2x,
+                                                https://demo.cloudimg.io/bound/1200x270/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 3x"
+                                                media="(max-width: 576px)">
+
+                               <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://demo.cloudimg.io/bound/500x140/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1x,
+                                                https://demo.cloudimg.io/bound/750x210/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1.5x,
+                                                https://demo.cloudimg.io/bound/1000x280/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 2x,
+                                                https://demo.cloudimg.io/bound/1500x420/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 3x"
+                                                media="(max-width: 768px)">
+
+
+                                <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://azqpyohthm.cloudimg.io/bound/280x280/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1x,
+                                                https://azqpyohthm.cloudimg.io/bound/420x420/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1.5x,
+                                                https://azqpyohthm.cloudimg.io/bound/560x560/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 2x,
+                                                https://azqpyohthm.cloudimg.io/bound/840x840/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 3x"
+                                                media="(max-width: 992px)">
+
+                                <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://azqpyohthm.cloudimg.io/bound/320x320/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1x,
+                                                https://azqpyohthm.cloudimg.io/bound/480x480/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1.5x,
+                                                https://azqpyohthm.cloudimg.io/bound/640x640/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 2x,
+                                                https://azqpyohthm.cloudimg.io/bound/960x960/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 3x"
+                                                media="(max-width: 1200px)">
+
+                                <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://azqpyohthm.cloudimg.io/bound/550x450/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1x,
+                                                https://azqpyohthm.cloudimg.io/bound/825x675/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1.5x,
+                                                https://azqpyohthm.cloudimg.io/bound/1100x900/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 2x,
+                                                https://azqpyohthm.cloudimg.io/bound/1650x1350/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 3x"
+                                                media="(max-width: 1200px)">
+
+                                <img class="slider-img-src" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg" />
+                            </picture>
+
+
+                                    {%endif%}
+
+                                <div id="loaderImage2" class="loader" ></div>
+                                </a>
+
+                                <div class="caption-container">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <p style="margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;">
+                                            {{ video.title|safe }}</p>
+                                        <p  style="font-size: 1.4rem;line-height: 1.6rem;height: 3.2rem;text-decoration: none;color: #fff;overflow: hidden;text-overflow: ellipsis;">Latest {{ video.category }} from {{video.channel}}</p>
+
+                                        {%if video.view_count >= 1000000000  %}
+                                                        {{ video.view_count|intdiv:"1000000000" }}<a style="color:red">ቢ</a>
+
+                                                    {%elif video.view_count >= 1000000  %}
+                                                        {{ video.view_count|intdiv:"1000000" }}<a style="color:red">ሚ</a>
+                                                        {%elif video.view_count >= 1000  %}
+                                                        {{ video.view_count|intdiv:"1000" }}<a style="color:red">ሺ</a>
+                                                    {% else %}
+                                                        {{video.view_count}}
+                                                    {% endif %}
+
+                                                    {%if video.view_count < 2%}
+                                                    {% else %}
+                                                        ጊዜ ታይቷል
+                                        {%endif%}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        {%else%}
+                            <div class="carousel-item ">
+                                <a class="vid" value="{{video.videoId}}" style="cursor:pointer;">
+                                {% if device_type == "mobile" %}
+
+
+                                  <picture>
+                                        <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://demo.cloudimg.io/bound/280x280/q80/{{ video.thumbnailsHigh}} 1x,
+                                                https://demo.cloudimg.io/crop/600x135/q80/{{ video.thumbnailsHigh}} 1.5x,
+                                                https://demo.cloudimg.io/bound/800x180/q80/{{ video.thumbnailsHigh}} 2x,
+                                                https://demo.cloudimg.io/bound/1200x270/q80/{{ video.thumbnailsHigh}} 3x"
+                                                media="(max-width: 576px)">
+                                                <img class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{ video.thumbnailsHigh}}" class="card-img-top" alt="...">
+                                        </picture>
+                                {%else%}
+                                    <!--<img src="https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg" class="d-block w-100" alt="...">-->
+                                    <picture>
+                                <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://demo.cloudimg.io/bound/280x280/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1x,
+                                                https://demo.cloudimg.io/crop/600x135/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1.5x,
+                                                https://demo.cloudimg.io/bound/800x180/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 2x,
+                                                https://demo.cloudimg.io/bound/1200x270/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 3x"
+                                                media="(max-width: 576px)">
+
+                               <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://demo.cloudimg.io/bound/500x140/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1x,
+                                                https://demo.cloudimg.io/bound/750x210/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1.5x,
+                                                https://demo.cloudimg.io/bound/1000x280/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 2x,
+                                                https://demo.cloudimg.io/bound/1500x420/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 3x"
+                                                media="(max-width: 768px)">
+
+
+                                <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://azqpyohthm.cloudimg.io/bound/280x280/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1x,
+                                                https://azqpyohthm.cloudimg.io/bound/420x420/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1.5x,
+                                                https://azqpyohthm.cloudimg.io/bound/560x560/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 2x,
+                                                https://azqpyohthm.cloudimg.io/bound/840x840/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 3x"
+                                                media="(max-width: 992px)">
+
+                                <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://azqpyohthm.cloudimg.io/bound/320x320/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1x,
+                                                https://azqpyohthm.cloudimg.io/bound/480x480/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1.5x,
+                                                https://azqpyohthm.cloudimg.io/bound/640x640/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 2x,
+                                                https://azqpyohthm.cloudimg.io/bound/960x960/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 3x"
+                                                media="(max-width: 1200px)">
+
+                                <source class="slider-img-srcset" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" srcset="https://azqpyohthm.cloudimg.io/bound/550x450/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1x,
+                                                https://azqpyohthm.cloudimg.io/bound/825x675/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 1.5x,
+                                                https://azqpyohthm.cloudimg.io/bound/1100x900/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 2x,
+                                                https://azqpyohthm.cloudimg.io/bound/1650x1350/q80/https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg 3x"
+                                                media="(max-width: 1200px)">
+
+                                <img class="slider-img-src" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg" />
+                            </picture>
+
+                                {%endif%}
+                                <div id="loaderImage2" class="loader" ></div>
+                                </a>
+                                <div class="carousel-caption d-none d-md-block">
+                                        <h1>{{ video.title|safe }}</h1>
+                                    <p  style="font-size: 1.4rem;line-height: 1.6rem;height: 3.2rem;text-decoration: none;color: #fff;overflow: hidden;text-overflow: ellipsis;">Latest {{ video.category }} from {{video.channel}}</h3>
+                                                 <p>
+                                        {%if video.view_count >= 1000000000  %}
+                                                        {{ video.view_count|intdiv:"1000000000" }}<a style="color:red">ቢ</a>
+
+                                                    {%elif video.view_count >= 1000000  %}
+                                                        {{ video.view_count|intdiv:"1000000" }}<a style="color:red">ሚ</a>
+                                                        {%elif video.view_count >= 1000  %}
+                                                        {{ video.view_count|intdiv:"1000" }}<a style="color:red">ሺ</a>
+                                                    {% else %}
+                                                        {{video.view_count}}
+                                                    {% endif %}
+
+                                                    {%if video.view_count < 2%}
+                                                    {% else %}
+                                                        ጊዜ ታይቷል
+                                        {%endif%}</h3>
+
+                                </div>
+                            </div>
+                        {%endif%}
+                    {%endwith%}
+                {%endfor%}
+            </div>
+
+
+            {% if  tops_of_the_week|length > 1 %}
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                    </a>
+                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                </a>
+
+            {%endif%}
+
+        </div>
+    </div>
+    </div>
+
+    {%endblock%}
+

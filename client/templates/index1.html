@@ -1,0 +1,159 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock title %} {% load mathfilters %}
+{% block content %}
+{% load custom_tags %}
+<style>
+
+</style>
+<div class="content-wrapper-hp">
+
+    <div class="content-limiter">
+
+        <!--{% include 'slider.html' with tops_of_the_week=tops_of_the_week device_type=device_type %} {%for data in data_list %}-->
+
+        <!-- Start Board Arrivals of the Month -->
+        <section class="board container-fluid" id="novita-mese">
+            <h2 class="section-title">{{data.section_title}}</h2>
+
+            <div class="products-gallery margin-bottom-sm clearfix">
+                <ul class="products-slider" id="monthly-products-slider">
+                    {% if data.video_list%} {% for video in data.video_list %}
+                    <li>
+
+                        <div class="slider-single-vid-container">
+                            <div class="single-vid-container ">
+
+                                <div class="card" style="background:transparent;">
+
+                                    <a class="vid" value="{{video.videoId}}" style="cursor:pointer;">
+                                        {% if device_type == "mobile" %}
+                                        <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs"
+                                            data-src="{{ video.thumbnailsMedium}}" class="card-img-top" alt="...">
+
+                                        {% else %}
+                                        <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs"
+                                            data-src="{{ video.thumbnailsHigh}}" class="card-img-top" alt="...">
+                                        {%endif%}
+                                        <div class="loaderImage2" class="loader"></div>
+
+                                    </a>
+
+                                    <div class="card-body" style="padding:0px">
+
+                                        <div class="tag-container">
+                                            <div class="tag">
+
+                                                <p
+                                                    style="font-size: 1.4rem;line-height: 1.6rem;height: 3.2rem;text-decoration: none;color: #fff;overflow: hidden;text-overflow: ellipsis;">
+                                                    {{ video.title|safe }}</p>
+                                            </div>
+                                            <div class="sub-tag">
+                                                <p style="  white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display:block;"
+                                                    class="card-text">{{ video.channel}}</p>
+                                            </div>
+                                            <p class="card-text"><small class="text-muted">
+                                                    {%if video.view_count >= 1000000000  %}
+                                                    {{ video.view_count|intdiv:"1000000000" }}<a style="color:red">ቢ</a>
+
+                                                    {%elif video.view_count >= 1000000  %}
+                                                    {{ video.view_count|intdiv:"1000000" }}<a style="color:red">ሚ</a>
+                                                    {%elif video.view_count >= 1000  %}
+                                                    {{ video.view_count|intdiv:"1000" }}<a style="color:red">ሺ</a>
+                                                    {% else %}
+                                                    {{video.view_count}}
+                                                    {% endif %}
+
+                                                    {%if video.view_count < 2%}
+                                                    የመጀመሪያው ይሁኑ
+                                                    {% else %}
+                                                    ጊዜ ታይቷል<i class="fa fa-eye" aria-hidden="true"></i>
+                                                    {%endif%}
+                                                    </br>
+                                                    {{ video.publishedAt|timesince|split}} ago 🕑</small></p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </li>
+                    {% endfor %} {% else %}
+                    <p>No polls are available.</p>
+                    {% endif %}
+
+                </ul>
+                <div class="slider-nav-container">
+                    <div class="slider-nav">
+                        <div class="e-prev-arrow"></div>
+                        <div class="e-next-arrow"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- End Board Arrivals of the Month -->
+        {%endfor%}
+
+    </div>
+
+
+
+    <script>
+
+        $(".vid").on("click", function () {
+
+            image = $(this).find(".loaderImage2").css("display", "block");
+            console.log(image)
+
+            video_id = $(this).attr('value')
+            $.ajax({
+                url: "{% url 'download_youtube' %}" + "?download=" + video_id,
+                dataType: 'json',
+                success: function (data) {
+
+                    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                    const url = data.filename
+
+                    audioFileUrl = proxyurl + url
+
+                    var a = document.createElement("a")
+                    a.href = url;
+                    a.src = url;
+                    // a. width="320";
+                    // a.height="240";
+                    a.controls = "";
+                    a.setAttribute("controls", "");
+                    a.type = "video/ogg";
+                    a.setAttribute("data-lity", "");
+                    document.body.appendChild(a);
+
+                    a.click();
+
+                    image.css("display", "none");
+                }
+                ,
+                error: function (xhr, status, error) {
+                    console.log(error)
+                    image.css("display", "none");
+
+                },
+
+            });
+
+        });
+
+
+    </script>
+    <script>
+        function init() {
+            var imgDefer = document.getElementsByTagName('img');
+            for (var i = 0; i < imgDefer.length; i++) {
+                if (imgDefer[i].getAttribute('data-src')) {
+                    imgDefer[i].setAttribute('src', imgDefer[i].getAttribute('data-src'));
+                }
+            }
+        }
+
+        window.onload = init;
+    </script>
+
+    {% endblock content %}

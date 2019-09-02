@@ -1,0 +1,866 @@
+/*************************************
+Mosaic component
+*************************************/
+.mosaic-component {
+  padding-bottom: 1.4rem; }
+  .mosaic-component.board.mosaic-home {
+    padding-top: 12rem; }
+  .mosaic-component.mosaic-3-elements-component {
+    padding-bottom: 1.8rem !important; }
+    @media all and (max-width: 991px) {
+      .mosaic-component.mosaic-3-elements-component {
+        padding-bottom: 1.2rem !important; } }
+    @media all and (max-width: 767px) {
+      .mosaic-component.mosaic-3-elements-component {
+        padding-bottom: 0.2rem !important; } }
+  .mosaic-component p.info-p {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    line-height: 2.8rem; }
+    .mosaic-component p.info-p.large {
+      font-size: 3rem;
+      line-height: 5rem;
+      margin: 4rem 0; }
+  .mosaic-component p.intro-p {
+    font-family: catamaran;
+    font-size: 2rem !important;
+    font-weight: 300;
+    line-height: 1.3rem;
+    letter-spacing: 0.13rem; }
+  .mosaic-component .subtitle {
+    font-family: catamaran;
+    font-size: 20px;
+    letter-spacing: 0.05rem;
+    font-weight: 700;
+    margin-top: 7.2rem; }
+  .mosaic-component h2.list-title {
+    margin-top: 0;
+    font-family: catamaran;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.05rem; }
+  .mosaic-component p.secondary-text,
+  .mosaic-component ul.secondary-text > li {
+    font-size: 1.4rem; }
+  .mosaic-component .same-height-class {
+    height: calc(50% - 2.6rem); }
+  .mosaic-component hr.align-left {
+    display: inline-block; }
+  .mosaic-component hr.spacer-top-l {
+    margin-top: 7.2rem;
+    padding-top: 0; }
+  .mosaic-component.secondary-type p:not(.info-p),
+  .mosaic-component.secondary-type ul li {
+    line-height: 2.4rem;
+    font-size: 1.4rem;
+    color: gray; }
+  .mosaic-component.presentation p.light {
+    color: gray;
+    font-family: catamaran;
+    font-size: 2rem;
+    letter-spacing: 0.13rem;
+    font-weight: 200;
+    opacity: 0.6; }
+  .mosaic-component.presentation a {
+    letter-spacing: 0.07rem;
+    font-weight: 500;
+    font-family: catamaran;
+    color: gray;
+    font-size: 1.3rem; }
+  .mosaic-component.presentation .info-p {
+    margin-top: 4rem;
+    margin-bottom: 4.6rem;
+    width: 40%; }
+  .mosaic-component.presentation .col-md-8.col-sm-12 .info-p {
+    margin-top: 4rem;
+    margin-bottom: 4.6rem;
+    width: 40%; }
+  .mosaic-component.presentation .info-p-dark {
+    color: gray;
+    margin-top: 4rem;
+    margin-bottom: 4.6rem;
+    width: 60%;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    line-height: 2.8rem; }
+  .mosaic-component.presentation .informative {
+    opacity: 1;
+    font-size: 1.4rem;
+    font-weight: 200;
+    letter-spacing: 0.1rem;
+    font-family: catamaran;
+    color: gray; }
+  .mosaic-component.presentation .small {
+    font-family: catamaran; }
+  .mosaic-component.presentation ul {
+    padding: 0;
+    color: gray; }
+    .mosaic-component.presentation ul li {
+      list-style: none;
+      color: gray; }
+      .mosaic-component.presentation ul li a {
+        font-size: 1.4rem;
+        font-weight: 600;
+        letter-spacing: 0.06rem;
+        color: blue;
+        line-height: 2.86;
+        padding: 0; }
+        .mosaic-component.presentation ul li a::after {
+          content: "\f105";
+          font: normal normal normal 14px/1 FontAwesome;
+          margin-left: 0.8rem; }
+  .mosaic-component.document p {
+    font-weight: 300;
+    letter-spacing: 0.03rem;
+    line-height: 1.79;
+    padding-bottom: 2.2rem; }
+    .mosaic-component.document p:not(.small-responsive) {
+      font-size: 1.6rem; }
+    .mosaic-component.document p.larger {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.04rem;
+      line-height: 1.7;
+      margin-bottom: 2.8rem;
+      margin-top: 2.8rem; }
+  .mosaic-component.mosaic-listing .mosaic-block-holder {
+    display: block;
+    margin-bottom: 3.8rem; }
+    .mosaic-component.mosaic-listing .mosaic-block-holder h2 {
+      font-size: 3.5rem;
+      font-weight: 200;
+      margin: 0; }
+    .mosaic-component.mosaic-listing .mosaic-block-holder .mosaic-block {
+      height: 30rem;
+      margin-bottom: 1.5rem; }
+      .mosaic-component.mosaic-listing .mosaic-block-holder .mosaic-block .grayscale {
+        background-size: cover !important; }
+      .mosaic-component.mosaic-listing .mosaic-block-holder .mosaic-block > img {
+        max-height: 30rem;
+        min-height: 30rem; }
+      .mosaic-component.mosaic-listing .mosaic-block-holder .mosaic-block:hover:not(.unhoverable) {
+        opacity: 1;
+        -moz-transition: none;
+        -webkit-transition: none;
+        -o-transition: color 0 ease-in;
+        transition: none; }
+    .mosaic-component.mosaic-listing .mosaic-block-holder:hover {
+      text-decoration: none; }
+  .mosaic-component .mosaic-block {
+    height: 68rem;
+    position: relative;
+    background-size: cover;
+    margin-bottom: 2.6rem;
+    overflow-y: hidden; }
+    .mosaic-component .mosaic-block.with-overlay::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.4 !important;
+      background-color: black !important;
+      z-index: 1;
+      transition: all 0.3s ease; }
+    .mosaic-component .mosaic-block .mosaic-name {
+      position: absolute;
+      top: 2.8rem;
+      left: 3.1rem;
+      font-family: catamaran;
+      color: white;
+      font-size: 1.3rem;
+      letter-spacing: 0.14rem;
+      font-weight: bold; }
+    .mosaic-component .mosaic-block .mosaic-sub-name {
+      position: absolute;
+      top: 5.2rem;
+      left: 3.1rem;
+      font-family: catamaran;
+      color: white;
+      font-size: 1.3rem;
+      letter-spacing: 0.14rem; }
+    .mosaic-component .mosaic-block .share-component {
+      top: 2.2rem;
+      right: 3.1rem; }
+    .mosaic-component .mosaic-block .mosaic-block-overlay {
+      visibility: hidden;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: blue;
+      opacity: 0.9; }
+    .mosaic-component .mosaic-block.has-overlay:hover > h3 {
+      display: none; }
+    .mosaic-component .mosaic-block.has-overlay:hover .mosaic-block-overlay {
+      visibility: visible;
+      padding: 3.4rem;
+      cursor: pointer;
+      z-index: 9999; }
+      .mosaic-component .mosaic-block.has-overlay:hover .mosaic-block-overlay h3 {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto; }
+      .mosaic-component .mosaic-block.has-overlay:hover .mosaic-block-overlay > a {
+        display: block;
+        margin-top: 3.4rem;
+        font-family: "Catamaran";
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-transform: uppercase; }
+        .mosaic-component .mosaic-block.has-overlay:hover .mosaic-block-overlay > a:hover {
+          text-decoration: none; }
+    .mosaic-component .mosaic-block.has-name h3 {
+      bottom: 7.5rem; }
+    .mosaic-component .mosaic-block.has-name .name {
+      bottom: 5.5rem;
+      position: absolute;
+      font-size: 1.35rem;
+      left: 3.5rem; }
+    @media all and (max-width: 991px) {
+      .mosaic-component .mosaic-block.has-name h3 {
+        bottom: 6rem; }
+      .mosaic-component .mosaic-block.has-name .name {
+        bottom: 4rem;
+        left: 2rem; } }
+    .mosaic-component .mosaic-block > .cta {
+      bottom: 3rem;
+      color: #fff;
+      left: 3.5rem;
+      position: absolute; }
+      .mosaic-component .mosaic-block > .cta a {
+        /* temporary fix for anchors inside cta span */
+        color: inherit; }
+      .mosaic-component .mosaic-block > .cta:hover {
+        text-decoration: underline; }
+    .mosaic-component .mosaic-block.unhoverable {
+      cursor: default; }
+      .mosaic-component .mosaic-block.unhoverable h3 {
+        cursor: default; }
+    .mosaic-component .mosaic-block:hover:not(.unhoverable):not(.has-overlay) {
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s ease-in;
+      -webkit-transition: opacity 0.3s ease-in; }
+      .mosaic-component .mosaic-block:hover:not(.unhoverable):not(.has-overlay) .overlay {
+        background: black;
+        opacity: 0.2; }
+      .mosaic-component .mosaic-block:hover:not(.unhoverable):not(.has-overlay) .share-component {
+        opacity: 1;
+        transition: opacity 0.3s ease-in;
+        -webkit-transition: opacity 0.3s ease-in; }
+    .mosaic-component .mosaic-block .bottom-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.65);
+      padding: 2.6rem 3rem 5rem; }
+      .mosaic-component .mosaic-block .bottom-content .label,
+      .mosaic-component .mosaic-block .bottom-content h3 {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: 0; }
+      .mosaic-component .mosaic-block .bottom-content h3 {
+        font-size: 4rem;
+        letter-spacing: 2.7rem;
+        letter-spacing: 0.2rem;
+        font-weight: 400;
+        margin-top: 4rem;
+        margin-bottom: 1.8rem; }
+      .mosaic-component .mosaic-block .bottom-content p {
+        font-size: 2rem;
+        line-height: 3rem;
+        letter-spacing: 0.1rem;
+        font-weight: 300;
+        color: #fff;
+        font-family: catamaran;
+        margin-bottom: 0; }
+    .mosaic-component .mosaic-block > a:not(.share) {
+      display: block;
+      height: 100%;
+      width: 100%; }
+    .mosaic-component .mosaic-block .share-component {
+      opacity: 0;
+      position: absolute;
+      right: 2rem;
+      top: 2rem; }
+    .mosaic-component .mosaic-block > img,
+    .mosaic-component .mosaic-block a > img,
+    .mosaic-component .mosaic-block > picture img,
+    .mosaic-component .mosaic-block a > picture img {
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      width: 100%;
+      min-height: 68rem; }
+    @media all and (min-width: 1600px) {
+      .mosaic-component .mosaic-block {
+        height: 68rem;
+        transition: height 0.3s ease;
+        -webkit-transition: height 0.3s ease; }
+        .mosaic-component .mosaic-block > img,
+        .mosaic-component .mosaic-block a > img,
+        .mosaic-component .mosaic-block > picture img,
+        .mosaic-component .mosaic-block a > picture img {
+          min-height: 68rem; } }
+    @media all and (min-width: 1900px) {
+      .mosaic-component .mosaic-block {
+        transition: height 0.3s ease;
+        -webkit-transition: height 0.3s ease; }
+        .mosaic-component .mosaic-block > img,
+        .mosaic-component .mosaic-block a > img,
+        .mosaic-component .mosaic-block > picture img,
+        .mosaic-component .mosaic-block a > picture img {
+          min-height: 68rem; } }
+    .mosaic-component .mosaic-block .author-info-component {
+      position: absolute;
+      top: 8rem;
+      left: 2.9rem; }
+      .mosaic-component .mosaic-block .author-info-component .author-info .media .media-body .media-heading {
+        color: #fff; }
+    .mosaic-component .mosaic-block .mosaic-date {
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.15rem;
+      color: #fff;
+      text-transform: uppercase;
+      font-family: catamaran;
+      position: absolute;
+      top: 41.5rem;
+      right: 3.4rem;
+      left: 3.4rem; }
+      @media (max-width: 991px) {
+        .mosaic-component .mosaic-block .mosaic-date {
+          left: 2rem;
+          right: 2rem;
+          top: 21rem; } }
+    .mosaic-component .mosaic-block h3 {
+      font-size: 3rem;
+      line-height: 4.5rem;
+      letter-spacing: 0.15rem;
+      color: #fff;
+      font-weight: 300;
+      position: absolute;
+      top: 44.4rem;
+      right: 3.4rem;
+      left: 3.4rem;
+      margin-top: 0;
+      z-index: 9999; }
+      .mosaic-component .mosaic-block h3 small {
+        font-size: 1.4rem;
+        font-weight: 300;
+        letter-spacing: 0.15rem;
+        color: #fff;
+        text-transform: uppercase; }
+      .mosaic-component .mosaic-block h3 a {
+        color: #fff;
+        text-decoration: none; }
+      .mosaic-component .mosaic-block h3.position {
+        font-size: 2.4rem;
+        font-weight: 500;
+        color: #fff;
+        line-height: 3.7rem; }
+        .mosaic-component .mosaic-block h3.position small {
+          color: #fff;
+          font-size: 1.4rem;
+          line-height: 2.3rem;
+          font-weight: 400;
+          display: inline-block;
+          text-transform: none; }
+      .mosaic-component .mosaic-block h3.large {
+        font-size: 4rem;
+        letter-spacing: 0.13rem; }
+    .mosaic-component .mosaic-block .overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: none; }
+    .mosaic-component .mosaic-block .label {
+      font-size: 1.3rem;
+      letter-spacing: 0.14rem;
+      padding: 0;
+      position: absolute;
+      top: 3.2rem;
+      left: 3.4rem;
+      text-align: left; }
+      .mosaic-component .mosaic-block .label span {
+        font-weight: 400;
+        margin-top: 6px;
+        display: block; }
+    .mosaic-component .mosaic-block.light h3,
+    .mosaic-component .mosaic-block.light > .cta,
+    .mosaic-component .mosaic-block.light .label {
+      color: gray; }
+    .mosaic-component .mosaic-block.light .label span {
+      color: black; }
+  .mosaic-component .full-height {
+    height: auto; }
+    .mosaic-component .full-height img {
+      max-height: none;
+      height: calc(100% - 20%);
+      min-height: 98rem; }
+      @media screen and (min-width: 1700px) {
+        .mosaic-component .full-height img {
+          max-height: 103.7rem; } }
+      @media screen and (min-width: 1700px) {
+        .mosaic-component .full-height img {
+          max-height: 95rem;
+          min-height: 96rem; } }
+  .mosaic-component.mosaic-list .mosaic-block {
+    display: block !important; }
+    .mosaic-component.mosaic-list .mosaic-block:hover {
+      opacity: 1;
+      transition: none; }
+    .mosaic-component.mosaic-list .mosaic-block a.overlay:hover, .mosaic-component.mosaic-list .mosaic-block a.overlay:focus, .mosaic-component.mosaic-list .mosaic-block a.overlay:active {
+      text-decoration: none; }
+      .mosaic-component.mosaic-list .mosaic-block a.overlay:hover .cta:hover, .mosaic-component.mosaic-list .mosaic-block a.overlay:focus .cta:hover, .mosaic-component.mosaic-list .mosaic-block a.overlay:active .cta:hover {
+        text-decoration: underline; }
+    .mosaic-component.mosaic-list .mosaic-block a.overlay p {
+      color: #fff; }
+    .mosaic-component.mosaic-list .mosaic-block .overlay {
+      cursor: pointer;
+      opacity: 0;
+      display: block;
+      padding: 25px;
+      -webkit-transition: opacity 0.3s ease-in;
+      -moz-transition: opacity 0.3s ease-in;
+      -ms-transition: opacity 0.3s ease-in;
+      -o-transition: opacity 0.3s ease-in;
+      transition: opacity 0.3s ease-in; }
+      .mosaic-component.mosaic-list .mosaic-block .overlay h3 {
+        display: inline-block !important;
+        font-size: 4rem;
+        letter-spacing: 0.13rem;
+        top: 3rem;
+        display: block;
+        position: static;
+        margin-bottom: 25px; }
+      .mosaic-component.mosaic-list .mosaic-block .overlay p {
+        font-size: 2rem;
+        font-weight: 200;
+        line-height: 1.3;
+        letter-spacing: 0.13rem;
+        margin-bottom: 33px; }
+      .mosaic-component.mosaic-list .mosaic-block .overlay .cta {
+        font-family: catamaran;
+        font-size: 1.3rem;
+        font-weight: 500;
+        letter-spacing: 0.07rem;
+        color: #fff;
+        -webkit-transition: text-decoration 0.3s ease;
+        -moz-transition: text-decoration 0.3s ease;
+        -ms-transition: text-decoration 0.3s ease;
+        -o-transition: text-decoration 0.3s ease;
+        transition: text-decoration 0.3s ease; }
+    .mosaic-component.mosaic-list .mosaic-block:hover:not(.unhoverable) .overlay {
+      opacity: 1;
+      background-color: blue; }
+    .mosaic-component.mosaic-list .mosaic-block:hover:not(.unhoverable) h3 {
+      display: none; }
+  .mosaic-component a.more, .mosaic-component a.less {
+    font-size: 1.3rem;
+    letter-spacing: 0.07rem;
+    color: gray;
+    font-weight: 500;
+    font-family: catamaran; }
+    .mosaic-component a.more:hover, .mosaic-component a.more:focus, .mosaic-component a.less:hover, .mosaic-component a.less:focus {
+      color: blue;
+      text-decoration: none; }
+  .mosaic-component a.less {
+    display: none; }
+
+@media all and (min-width: 1300px) {
+  .mosaic-component.secondary-type p:not(.info-p),
+  .mosaic-component.secondary-type ul li {
+    font-size: 1.6rem; } }
+
+@media all and (max-width: 991px) {
+  .mosaic-component {
+    padding: 3.8rem 2.8rem 2rem !important; }
+    .mosaic-component.board.mosaic-home {
+      padding-top: 14rem !important; }
+    .mosaic-component.grid .mosaic-block {
+      min-height: calc(100% - 2.6rem); }
+    .mosaic-component .news-block-component p:first-child {
+      margin-top: 2.5rem; }
+    .mosaic-component.presentation .info-p {
+      margin-top: 4.4rem;
+      margin-bottom: 4rem;
+      width: 100%; }
+    .mosaic-component.mosaic-list .mosaic-block h3, .mosaic-component.mosaic-list .mosaic-block.large {
+      font-size: 2rem;
+      letter-spacing: 0.12rem; }
+    .mosaic-component.mosaic-list .mosaic-block .overlay h3, .mosaic-component.mosaic-list .mosaic-block .overlay.large {
+      font-size: 2rem;
+      letter-spacing: 0.12rem;
+      line-height: 2.2rem; }
+    .mosaic-component.mosaic-list .mosaic-block .overlay p {
+      font-size: 1.6rem; }
+    .mosaic-component a.more, .mosaic-component a.less {
+      font-size: 1.1rem;
+      letter-spacing: 0.06rem; }
+    .mosaic-component .mosaic-block {
+      height: 44.8rem; }
+      .mosaic-component .mosaic-block img,
+      .mosaic-component .mosaic-block a img,
+      .mosaic-component .mosaic-block picture img,
+      .mosaic-component .mosaic-block a picture img {
+        height: 100%;
+        min-height: 0;
+        max-height: none; }
+      .mosaic-component .mosaic-block h3 {
+        line-height: 4rem;
+        letter-spacing: 0.12rem;
+        left: 2rem;
+        right: 2rem;
+        top: 24rem; }
+      .mosaic-component .mosaic-block > .cta {
+        bottom: 1.6rem;
+        left: 2rem; }
+      .mosaic-component .mosaic-block .label {
+        font-size: 1.1rem;
+        letter-spacing: 0.12rem;
+        top: 2.2rem;
+        left: 2rem; }
+    .mosaic-component .full-height {
+      height: 100%; }
+      .mosaic-component .full-height img {
+        max-height: none;
+        height: 100%; }
+    .mosaic-component .col-xs-12.text-center {
+      line-height: 1.1rem; }
+    .mosaic-component .subtitle {
+      margin-top: 0; } }
+
+@media all and (max-width: 991px) {
+  .mosaic-component {
+    padding-top: 2.2rem; }
+    .mosaic-component h2.list-title {
+      line-height: 1.5;
+      letter-spacing: 0.1rem; }
+    .mosaic-component.presentation .col-md-8.col-sm-12 .info-p-dark,
+    .mosaic-component.presentation .col-md-8.col-sm-12 .info-p {
+      width: 100%; }
+    .mosaic-component p.intro-p,
+    .mosaic-component p.secondary-text,
+    .mosaic-component ul.secondary-text > li {
+      font-size: 1.6rem;
+      font-weight: 300;
+      line-height: 2.4rem;
+      font-family: catamaran;
+      letter-spacing: 0.13rem; }
+    .mosaic-component.grid .mosaic-block h3 {
+      line-height: 1.38;
+      z-index: 0; } }
+
+@media all and (max-width: 767px) {
+  .mosaic-component {
+    padding: 1.8rem 1.8rem 2rem !important; }
+    .mosaic-component.board.mosaic-home {
+      padding-top: 10rem !important; }
+    .mosaic-component.mosaic-list .mosaic-block h3, .mosaic-component.mosaic-list .mosaic-block.large {
+      font-size: 1.8rem;
+      letter-spacing: 0.12rem; }
+    .mosaic-component.mosaic-list .mosaic-block .overlay h3, .mosaic-component.mosaic-list .mosaic-block .overlay.large {
+      font-size: 1.8rem;
+      letter-spacing: 0.12rem; }
+    .mosaic-component h2.list-title {
+      font-size: 2.6rem;
+      line-height: 1.35;
+      letter-spacing: 0.06rem; }
+    .mosaic-component .mosaic-block {
+      margin-bottom: 1.6rem; }
+    .mosaic-component .full-height {
+      height: 100%; }
+      .mosaic-component .full-height img {
+        height: 100%; }
+    .mosaic-component .mosaic-carousel .slick-prev,
+    .mosaic-component .mosaic-carousel .slick-next {
+      bottom: -4rem;
+      transform: none;
+      top: auto;
+      height: 4.6rem; }
+      .mosaic-component .mosaic-carousel .slick-prev:before,
+      .mosaic-component .mosaic-carousel .slick-next:before {
+        font-size: 4.6rem;
+        color: black; }
+    .mosaic-component .mosaic-carousel .slick-prev {
+      left: 1.8rem; }
+    .mosaic-component .mosaic-carousel .slick-next {
+      right: 1.8rem; }
+    .mosaic-component .mosaic-carousel-pagination {
+      font-size: 1.4rem;
+      line-height: 3.3rem;
+      letter-spacing: 0.07rem;
+      font-weight: 200;
+      text-align: center; }
+      .mosaic-component .mosaic-carousel-pagination .active {
+        font-size: 2rem;
+        letter-spacing: 0.1rem;
+        vertical-align: top; }
+    .mosaic-component .testimonial {
+      margin-top: 4rem; } }
+
+@keyframes grow {
+  0% {
+    display: none;
+    opacity: 0; }
+  1% {
+    display: block;
+    opacity: 0;
+    transform: scale(0); }
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
+
+.campaign-block-link .mosaic-component .mosaic-block > img,
+.campaign-block-link .mosaic-component .mosaic-block a > img,
+.campaign-block-link .mosaic-component .mosaic-block > picture img,
+.campaign-block-link .mosaic-component .mosaic-block a > picture img,
+.page-campaign-content .mosaic-component .mosaic-block > img,
+.page-campaign-content .mosaic-component .mosaic-block a > img,
+.page-campaign-content .mosaic-component .mosaic-block > picture img,
+.page-campaign-content .mosaic-component .mosaic-block a > picture img {
+  max-height: 67rem;
+  min-height: 67rem;
+  height: 67rem; }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1;
+    display: block; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1;
+    display: block; } }
+
+.fadeIn {
+  opacity: 0; }
+
+.fadeIn.go {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
+
+/** JH Added */
+.mosaic-component .fadeIn.go,
+.mosaic-componentmosaic-home .fadeIn.go {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  animation-duration: 0.6s;
+  -webkit-animation-timing-function: ease;
+  /* Chrome, Safari, Opera */
+  animation-timing-function: ease; }
+
+.side-image.mosaic-component .mosaic-block {
+  margin-bottom: 0; }
+
+.same-height-mosaic-target {
+  margin-bottom: 2.8rem; }
+  .same-height-mosaic-target.mosaic-block > img {
+    height: 100%;
+    max-height: none; }
+
+.mosaic-flex-container {
+  display: flex; }
+  @media screen and (max-width: 767px) {
+    .mosaic-flex-container {
+      display: block; }
+      .mosaic-flex-container img {
+        position: relative !important; } }
+  .mosaic-flex-container > div {
+    align-items: stretch; }
+  .mosaic-flex-container > .mosaic-flex-container {
+    flex-direction: column;
+    position: relative; }
+  @media screen and (max-width: 767px) {
+    .mosaic-flex-container .same-height-class {
+      height: auto; } }
+  .mosaic-flex-container .same-height-class:last-child {
+    width: 100%; }
+  .mosaic-flex-container .mosaic-block {
+    overflow-y: hidden; }
+
+.full-height-flex .news-block-component {
+  height: calc(100% - 2.6rem); }
+
+@media screen and (max-width: 767px) {
+  .full-height-flex {
+    width: auto;
+    display: block; } }
+
+.mosaic-flex-column {
+  flex-direction: column; }
+
+.mosaic-block-container-66-34 > div {
+  align-items: stretch; }
+  @media screen and (min-width: 768px) {
+    .mosaic-block-container-66-34 > div {
+      width: 100%; } }
+
+.mosaic-block-container-66-34 > div:first-child {
+  align-self: flex-start; }
+
+.mosaic-block-container-66-34 > div:last-child {
+  align-self: flex-end; }
+
+.double-mosaic-block-container > div {
+  height: calc(50% - 2.6rem); }
+  @media screen and (max-width: 767px) {
+    .double-mosaic-block-container > div {
+      height: auto; } }
+  .double-mosaic-block-container > div:last-child {
+    width: 100%;
+    align-self: flex-end; }
+    @media screen and (min-width: 768px) {
+      .double-mosaic-block-container > div:last-child {
+        width: 100%; } }
+
+.mosaic-block-homepage {
+  margin-bottom: 2.6rem;
+  padding: 0 1rem; }
+  .mosaic-block-homepage .mosaic-block-homepage-content {
+    width: 100%;
+    height: 23rem;
+    overflow: hidden;
+    position: relative; }
+    @media screen and (min-width: 1400px) {
+      .mosaic-block-homepage .mosaic-block-homepage-content {
+        height: 32rem; } }
+    .mosaic-block-homepage .mosaic-block-homepage-content > img {
+      width: 100%;
+      position: absolute; }
+      @media screen and (min-width: 768px) and (max-width: 992px) {
+        .mosaic-block-homepage .mosaic-block-homepage-content > img {
+          height: 100%; } }
+    @media screen and (mix-width: 768px) and (max-width: 992px) {
+      .mosaic-block-homepage .mosaic-block-homepage-content {
+        height: 40rem; } }
+  .mosaic-block-homepage .mosaic-block-homepage-text {
+    padding: 1.6rem;
+    color: #fff;
+    font-size: 2rem; }
+    @media screen and (min-width: 768px) {
+      .mosaic-block-homepage .mosaic-block-homepage-text {
+        font-size: 2.2rem; } }
+  .mosaic-block-homepage .mosaic-block-homepage-title {
+    font-family: catamaran;
+    text-transform: uppercase;
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 1rem; }
+  .mosaic-block-homepage .mosaic-block-homepage-subtitle {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    color: black;
+    font-weight: 300;
+    min-height: 6rem; }
+
+a.mosaic-see-more {
+  display: block;
+  width: 100%;
+  text-transform: uppercase;
+  margin: 2rem auto;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: 1.4rem; }
+  a.mosaic-see-more > span {
+    font-family: catamaran; }
+
+.anchor-block {
+  cursor: pointer;
+  display: block; }
+  .anchor-block:hover {
+    text-decoration: none; }
+  .anchor-block .mosaic-block-overlay {
+    cursor: pointer; }
+  .anchor-block .mosaic-preview-text {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.4rem; }
+
+.mosaic-video-block.video-grid-block {
+  height: 68rem;
+  background: #fff; }
+  @media (max-width: 991px) {
+    .mosaic-video-block.video-grid-block {
+      height: 44.8rem; } }
+  .mosaic-video-block.video-grid-block .video-grid-preview img {
+    height: 40rem; }
+    @media screen and (max-width: 992px) {
+      .mosaic-video-block.video-grid-block .video-grid-preview img {
+        height: 24rem; } }
+  .mosaic-video-block.video-grid-block:before {
+    left: 41%;
+    top: 23%; }
+    @media screen and (max-width: 992px) {
+      .mosaic-video-block.video-grid-block:before {
+        top: 18%;
+        left: 45%; } }
+    @media screen and (max-width: 576px) {
+      .mosaic-video-block.video-grid-block:before {
+        top: 20%; } }
+
+.panels-component.mosaic-event-block {
+  height: 68rem;
+  padding: 0;
+  padding-top: 0; }
+  @media screen and (max-width: 992px) {
+    .panels-component.mosaic-event-block {
+      padding: 0 1.5rem;
+      height: auto; } }
+  .panels-component.mosaic-event-block .thumbnail {
+    border: 1px solid gray; }
+    .panels-component.mosaic-event-block .thumbnail img {
+      height: 40rem; }
+      @media screen and (max-width: 992px) {
+        .panels-component.mosaic-event-block .thumbnail img {
+          height: 24rem; } }
+    .panels-component.mosaic-event-block .thumbnail .caption {
+      height: 28rem; }
+
+.flags-wrapper {
+  position: absolute;
+  top: 2.8rem;
+  right: 3.1rem;
+  padding: 0.5rem;
+  background: #fff;
+  height: 2rem;
+  cursor: pointer;
+  display: none; }
+  .flags-wrapper .flags-container .flag {
+    position: relative; }
+    .flags-wrapper .flags-container .flag > img {
+      width: 2rem;
+      margin-top: -2.6rem; }
+
+.show-flags .flags-wrapper {
+  display: block; }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .mosaic-flex-container .big-mosaic-block.col-sm-8 a.anchor-block {
+    height: 96%; } }
+
+@media screeb and (min-width: 1200px) {
+  .mosaic-flex-container .flex-end .news-block-component {
+    height: 100%; } }
+
+/*# sourceMappingURL=mosaic.css.map */

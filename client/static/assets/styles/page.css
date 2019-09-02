@@ -1,0 +1,73 @@
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #e60101;
+  border-color: #e60101; }
+
+.page-link {
+  color: #e60101; }
+
+.star {
+  color: #fff;
+  padding-right: 1rem; }
+  @media (max-width: 992px) {
+    .star {
+      height: 100%; } }
+  .star .fa {
+    font-size: 1.3rem; }
+  .star:hover {
+    color: #514949; }
+
+@media (max-width: 992px) {
+  .cart-popup-container {
+    width: 100%; }
+    .cart-popup-container .cart .cart-popup-top {
+      width: 99%;
+      padding-left: .5rem;
+      padding-right: 1rem; } }
+
+.cart-popup-container a {
+  color: #000;
+  text-decoration: none; }
+
+.close-icon {
+  display: inline;
+  position: relative;
+  padding-right: 1rem; }
+
+.carousel-caption {
+  display: block !important;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 1rem; }
+  @media (min-width: 1024px) {
+    .carousel-caption h1 {
+      font-size: 2rem; }
+    .carousel-caption h3 {
+      font-size: 1.5rem; } }
+  @media (max-width: 1024px) and (min-width: 993px) {
+    .carousel-caption h1 {
+      font-size: 1.5rem; }
+    .carousel-caption h3 {
+      font-size: 1.3rem; } }
+  @media (max-width: 767px) {
+    .carousel-caption h1 {
+      font-size: .8rem; }
+    .carousel-caption h3 {
+      font-size: .6rem; } }
+  @media (max-width: 992px) and (min-width: 768px) {
+    .carousel-caption h1 {
+      font-size: 1.5rem; }
+    .carousel-caption h3 {
+      font-size: 1.2rem; } }
+
+.footer {
+  background: #929a9e21; }
+  .footer .footer-header {
+    background-color: #dcdcdc59; }
+  .footer .fab {
+    color: #e60101; }
+  .footer a {
+    color: #e60101; }
+
+/*# sourceMappingURL=page.css.map */

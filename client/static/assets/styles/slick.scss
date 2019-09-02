@@ -1,0 +1,9 @@
+.slick-slide { 
+ outline: none; 
+}
+#prev, #next {  
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ cursor: pointer;
+}

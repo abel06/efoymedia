@@ -1,0 +1,76 @@
+{% load sass_tags %}
+{% load mathfilters %}
+
+{% load custom_tags %}
+{%load static%}
+
+{%block slider%}
+
+<div class="slider">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for top_video in tops_of_the_week %}
+            {% with video=top_video.data %}
+            {%if top_video == tops_of_the_week.0%}
+            <div class="carousel-item active">
+                <a href="{{video.url}}" data-lity>
+                    <img src="https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg" class="d-block w-100"></a>
+                <div class="caption-container">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>{{ video.title|safe }}</h1>
+                        <h3>Top {{ video.category }} of the week</h3>
+                        <h3>
+                            {%if video.view_count >= 1000000000  %}
+                            {{ video.view_count|intdiv:"1000000000" }}<a style="color:red">ቢ</a>
+
+                            {%elif video.view_count >= 1000000  %}
+                            {{ video.view_count|intdiv:"1000000" }}<a style="color:red">ሚ</a>
+                            {%elif video.view_count >= 1000  %}
+                            {{ video.view_count|intdiv:"1000" }}<a style="color:red">ሺ</a>
+                            {% else %}
+                            {{video.view_count}}
+                            {% endif %}
+
+                            {%if video.view_count < 2%}
+                            {% else %}
+                            ጊዜ ታይቷል
+                            {%endif%}</h3>
+                    </div>
+                </div>
+            </div>
+            {%else%}
+            <div class="carousel-item ">
+                <a href="{{video.url}}" data-lity>
+                    <img src="https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg" class="d-block w-100"
+                        alt="...">
+                </a>
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>{{ video.title|safe }}</h1>
+                    <h3>Top {{ video.category }} of the week</h3>
+                    <h3>
+                        {%if video.view_count >= 1000000000  %}
+                        {{ video.view_count|intdiv:"1000000000" }}<a style="color:red">ቢ</a>
+
+                        {%elif video.view_count >= 1000000  %}
+                        {{ video.view_count|intdiv:"1000000" }}<a style="color:red">ሚ</a>
+                        {%elif video.view_count >= 1000  %}
+                        {{ video.view_count|intdiv:"1000" }}<a style="color:red">ሺ</a>
+                        {% else %}
+                        {{video.view_count}}
+                        {% endif %}
+
+                        {%if video.view_count < 2%}
+                        {% else %}
+                        ጊዜ ታይቷል
+                        {%endif%}</h3>
+
+                </div>
+            </div>
+            {%endif%}
+            {%endwith%}
+            {%endfor%}
+        </div>
+
+    </div>
+</div>
+{%endblock%}

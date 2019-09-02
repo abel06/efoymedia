@@ -1,0 +1,12 @@
+.slider img {
+  font-family: "object-fit: cover;";
+  max-height: 30rem;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center center;
+  object-position: center center;
+  width: 100%; 
+}
+
+/*# sourceMappingURL=slider.css.map */

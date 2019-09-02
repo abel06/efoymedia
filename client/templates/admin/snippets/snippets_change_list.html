@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+{% extends 'admin/change_list.html' %}
+{% load embed_video_tags %}
+{% block object-tools %}
+
+{% csrf_token %}
+
+
+
+<!-- {% for td in form %} -->
+
+<!-- {{ field.errors }}
+        {{ field.label_tag }}
+        {{ field }} -->
+
+<div class="submit-row">
+    <input type="submit" class="default" value="Submit">
+</div>
+
+<!-- {% endfor %} -->
+
+
+
+
+
+
+{{ block.super }}
+
+{% endblock object-tools %}

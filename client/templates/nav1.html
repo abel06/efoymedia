@@ -1,0 +1,267 @@
+{% load static %}
+{% load custom_tags %}
+{% load sass_tags %}
+
+<div class="custom-navbar">
+    <nav class="navbar navbar-expand-lg  fixed-top">
+        <a class="navbar-brand" href="https://abel06.pythonanywhere.com/">Ef<?xml version="1.0" encoding="iso-8859-1"?>
+
+        </a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" id="home">
+                    <a class="nav-link" href="https://www.efoymedia.com/">Home </a>
+                </li>
+                <li class="nav-item" id="music">
+                    <a class="nav-link" href="{{ STATIC_URL }}/music">Musics</a>
+                </li>
+                <li class="nav-item" id="movie">
+                    <a class="nav-link" href="{{ STATIC_URL }}/movie">Movies</a>
+                </li>
+                <li class="nav-item" id="entertainment">
+                    <a class="nav-link" href="{{ STATIC_URL }}/entertainment">Entertainment</a>
+                </li>
+
+                <li class="nav-item" id="news">
+                    <a class="nav-link" href="{{ STATIC_URL }}/news">News</a>
+                </li>
+                <li class="nav-item" id="radio">
+                    <a class="nav-link" href="{{ STATIC_URL }}/radio">Radio</a>
+                </li>
+                <li class="nav-item" id="blog">
+                    <a class="nav-link" href="{{ STATIC_URL }}/blog">Blog </a>
+                </li>
+                <li class="nav-item" id="live">
+                    <a class="nav-link" href="{{ STATIC_URL }}/live">Live </a>
+                </li>
+
+                <li class="nav-item dropdown" id="religious">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink">
+                                Others
+                                </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" id="song" href="{{ STATIC_URL }}/song">Songs</a>
+                        <a class="dropdown-item" id="rchannel" href="{{ STATIC_URL }}/rchannel">Tv Channels</a>
+                        <a class="dropdown-item" href="{{ STATIC_URL }}/tvSerious">Tv Serious</a>
+                        <a class="dropdown-item" href="{{ STATIC_URL }}/peopleBlog">Social Blogs</a>
+
+                    </div>
+
+                </li>
+
+                <div class="star  cart-popup-toggle items-in-cart" style="display:inline; position:relative;float:left;">
+                    <i id="query" class="fa fa-star " style="    padding-left: 1rem;padding-top: 7px;" data-num-cart-items="13" aria-hidden="true"></i>
+                </div>
+
+            </ul>
+
+        </div>
+
+        <div class="search-container">
+
+            <form id="demo-2" style="position:relative;float:left; padding-right:5px;">
+                <div class="autocomplete " style="display:inline;">
+                    <input type="search" id="myInput" placeholder="Search" autocomplete="off">
+
+                </div>
+                <button class="go_button" id="go_btn" type="button">
+                    <i id="go" class="go fa fa-search" style="padding-left: 1rem;color:#ffffff;" aria-hidden="true"></i>
+                </button>
+
+            </form>
+
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span></button>
+
+        </div>
+
+        <script>
+            function autocomplete(inp) {
+                var currentFocus;
+                inp.addEventListener("input", function (e) {
+                    var q = $(this).val();
+                    console.log(q)
+
+                    $.ajax({
+                        url: "{% url 'auto_complete' %}" + "?search=" + q,
+                        success: function (data) {
+
+                            closeAllLists();
+                            if (!q) {
+                                return false;
+
+                            }
+                            currentFocus = -1;
+
+                            var arr = data.result[1]
+                                var a,
+                                    b,
+                                    i,
+                                    val = this.value
+
+                                a = document.createElement("DIV");
+                                a.setAttribute("id", "autocomplete-list");
+                                a.setAttribute("class", "autocomplete-items");
+
+                                document
+                                    .getElementById("myInput")
+                                    .parentNode
+                                    .appendChild(a);
+                                /* for each item in the array... */
+                                for (i = 0; i < arr.length; i++) {
+                                    b = document.createElement("DIV");
+
+                                    b.innerHTML += arr[i][0]
+
+                                    b.innerHTML += "<input type='hidden' value='" + arr[i][0] + "'>";
+
+                                    b.addEventListener("click", function (e) {
+
+                                        inp.value = this
+                                            .getElementsByTagName("input")[0]
+                                            .value;
+                                        window.location.href = "{% url 'search_youtube' %}" + "?search=" + inp.value;
+                                        closeAllLists();
+                                    });
+                                    a.appendChild(b);
+                                }
+
+                            }
+                        });
+                    });
+
+                    /* execute a function presses a key on the keyboard: */
+                    inp.addEventListener("keydown", function (e) {
+
+                        console.log(e.keyCode)
+
+                        var x = document.getElementById("autocomplete-list");
+                        if (x) 
+                            x = x.getElementsByTagName("div");
+                        if (e.keyCode == 40) {
+                            /*If the arrow DOWN key is pressed,
+                        increase the currentFocus variable:*/
+                            currentFocus++;
+                            /* and and make the current item more visible: */
+                            addActive(x);
+                        } else if (e.keyCode == 38) { //up
+                            /*If the arrow UP key is pressed,
+                        decrease the currentFocus variable:*/
+                            currentFocus--;
+                            /* and and make the current item more visible: */
+                            addActive(x);
+                        } else if (e.keyCode == 13) {
+                            /* If the ENTER key is pressed, prevent the form from being submitted, */
+                            e.preventDefault();
+                            console.log("Enter clicked" + currentFocus)
+
+                            if (currentFocus > -1) {
+
+                                /* and simulate a click on the "active" item: */
+
+                                if (x) 
+                                    x[currentFocus].click();
+                                }
+                            else {
+                                if (inp.value) {
+                                    window.location.href = "{% url 'search_youtube' %}" + "?search=" + inp.value;
+                                }
+                            }
+                        }
+                    });
+
+                    function addActive(x) {
+                        console.log(x + "add")
+                        /* a function to classify an item as "active": */
+                        if (!x) 
+                            return false;
+                        
+                        /* start by removing the "active" class on all items: */
+                        removeActive(x);
+                        if (currentFocus >= x.length) 
+                            currentFocus = 0;
+                        if (currentFocus < 0) 
+                            currentFocus = (x.length - 1);
+                        
+                        /* add class "autocomplete-active": */
+                        x[currentFocus]
+                            .classList
+                            .add("autocomplete-active");
+                    }
+
+                    function removeActive(x) {
+                        /* a function to remove the "active" class from all autocomplete items: */
+                        for (var i = 0; i < x.length; i++) {
+                            x[i]
+                                .classList
+                                .remove("autocomplete-active");
+                        }
+                    }
+
+                    function closeAllLists(elmnt) {
+                        console.log("close")
+                        /*close all autocomplete lists in the document,
+                        except the one passed as an argument:*/
+                        var x = document.getElementsByClassName("autocomplete-items");
+                        for (var i = 0; i < x.length; i++) {
+                            if (elmnt != x[i] && elmnt != inp) {
+                                x[i]
+                                    .parentNode
+                                    .removeChild(x[i]);
+                            }
+                        }
+                    }
+                    /* execute a function when someone clicks in the document: */
+                    document.addEventListener("click", function (e) {
+                        closeAllLists(e.target);
+
+                    });
+                }
+
+                function bar() {
+                    console.log($(this).val())
+                }
+
+                function setGetParameter() {
+
+                    searchWord = document
+                        .getElementById('search')
+                        .value;
+                    window.location.href = "{% url 'auto_complete' %}" + "?search=" + searchWord;
+                }
+        </script>
+
+        <script>
+            autocomplete(document.getElementById("myInput"));
+            document
+                .getElementById('go')
+                .onclick = function () {
+
+                    searchWord = document
+                        .getElementById('myInput')
+                        .value;
+                    if (searchWord) {
+                        window.location.href = "{% url 'search_youtube' %}" + "?search=" + searchWord;
+                    }
+                };
+        </script>
+
+    </div>
+
+</nav>
+</div>
+<script>
+var active = "{{ active }}";
+</script>
+
+<script>
+$("#myInput").on("focus", function (a) {
+    $("#go_btn").addClass('active')
+});
+
+$("#myInput").on("focusout", function (a) {
+    $("#go_btn").removeClass('active')
+});
+var active = "{{ active }}";
+</script>

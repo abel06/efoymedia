@@ -1,0 +1,136 @@
+{% load static %}
+{% load custom_tags %}
+<!doctype html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="{% static 'assets/styles/main2.css' %}">
+        {% block title %}
+            <title>
+                <h1>Home{| EfoyMedia </h1>
+            </title>
+        {% endblock title %}
+    </meta>
+
+    {% load sass_tags %}
+    {% load mathfilters %}
+    {% load static %}
+    {% block head_favicon %}
+        <script src="{% static 'assets/scripts/bootstrap.min.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    {% endblock head_favicon %}
+    {% block head_meta %}
+        {% block head_meta_charset %}
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        {% endblock head_meta_charset %}
+        {% block head_meta_contentlanguage %}
+            <meta http-equiv="Content-Language" value="en-US"/>
+        {% endblock head_meta_contentlanguage %}
+        {% block head_meta_viewport %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% endblock head_meta_viewport %}
+    {% endblock head_meta %}
+
+    {% block head_css %}
+
+        {% block head_css_site %}{% endblock head_css_site %}
+        {% block head_css_section %}{% endblock head_css_section %}
+        {% block head_css_page %}{% endblock head_css_page %}
+    {% endblock head_css %}
+    {% block stylesheet %}{% endblock %}
+</head>
+
+<body>
+
+    <header>
+
+        {# {% include "nav.html"%} #}
+
+    </header>
+    <!-- Start Cart Popup -->
+    <div class="cart-popup-container" style="margin-top: 3px;">
+        <div class="loading-overlay">
+            <span class="erickson-icon-spinner2"></span></div>
+        <div class="cart d-flex align-items-start flex-column">
+            <div class="cart-popup-content">
+                <div class="cart-popup-top " style="margin-top: .3rem;">
+                    <span class="close-icon my-1 mx-2 close">X</span>
+                    <div class="cart-popup-header">Popular </div>
+                </div>
+                <div class="cart-popup-items">
+
+                    {% for video in top_list %}
+                        <!-- Start Cart Popup Item (Layout 1) -->
+
+                        <a href="{{video.url}}" style "color:#e60101" data-lity>
+                            <div class="cart-popup-item">
+                                <div class="cart-popup-item-preview">
+                                    <!-- <img class="img-fluid" src="{{ video.thumbnailsLow }}" />-->
+                                    <span class="erickson-icon-link bundle-icon"></span>
+                                </div>
+                                <div class="cart-popup-item-info">
+                                    <span class="cart-popup-item-title">{{ video.title|safe }}</span>
+                                    <span class="cart-popup-item-spec-info">{{ video.view_count }} ጊዜ ታይቷል</span>
+                                    <span class="cart-popup-item-details">{{ video.like_count }}
+                                        <span class="product-favorite erickson-icon-half-heart"></span></span>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- End Cart Popup Item (Layout 1) -->
+                        {%endfor%}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Cart Popup -->
+
+        <main style="background:#000">
+
+            {% block content %}{% endblock %}
+        </main>
+
+        {% block paging %}{% endblock %}
+
+    </body>
+    {% include "footer.html"%}
+    {% block footer_javascript %}
+        {% block footer_javascript_site %}
+
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+            <script src="{% static 'assets/scripts/lity.min.js' %}"></script>
+
+            <script src="{% static 'assets/scripts/vendors.js' %}"></script>
+            <script src="{% static 'assets/scripts/main.js' %}"></script>
+            <script src="{% static 'assets/scripts/custom.js' %}"></script>
+            <script>
+                //   function init() {
+                //     var imgDefer1 = document.getElementsByClassName('slider-img-srcset');
+                //   for (var i = 0; i < imgDefer1.length; i++) {
+                //     if (imgDefer1[i].getAttribute('data-srcset')) {
+                //       imgDefer1[i].setAttribute('srcset',imgDefer1[i].getAttribute('data-srcset'));
+                //     }
+                //   }
+                //       var imgDefer2 = document.getElementsByClassName('slider-img-src');
+                //   for (var i = 0; i < imgDefer2.length; i++) {
+                //     if (imgDefer2[i].getAttribute('data-src')) {
+                //       imgDefer2[i].setAttribute('src',imgDefer2[i].getAttribute('data-src'));
+                //     }
+                //   }
+                //   }
+                //   window.onload = init;
+            </script>
+
+        {% endblock footer_javascript_site %}
+        {% block footer_javascript_section %}{% endblock footer_javascript_section %}
+        {% block footer_javascript_page %}{% endblock footer_javascript_page %}
+    {% endblock footer_javascript %}
+
+</html>

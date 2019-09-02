@@ -1,0 +1,105 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock title %} {% load mathfilters %} {% block content %}
+{% load custom_tags %}
+<style>
+    .lity-container {
+        max-width: 100% !important;
+    }
+</style>
+<div class="content-wrapper-hp">
+
+    <div class="content-limiter">
+
+        {% include 'slider.html' with tops_of_the_week=tops_of_the_week %} {%for data in data_list %}
+
+        <!-- Start Board Arrivals of the Month -->
+        <section class="board container-fluid" id="novita-mese">
+            <h2 class="section-title">{{data.section_title}}</h2>
+
+            <div class="products-gallery margin-bottom-sm clearfix">
+                <ul class="products-slider" id="monthly-products-slider">
+                    {% if data.video_list%} {% for video in data.video_list %}
+                    <li>
+
+                        <div class="slider-single-vid-container">
+                            <div class="single-vid-container ">
+
+                                <div class="card">
+
+                                    <a class="vid" value="{{video.url}}" style="cursor:pointer;">
+                                        <img src="{{ video.thumbnailsMedium}}" class="card-img-top" alt="..."
+                                            style="height:12rem;object-fit:cover;">
+                                        <div class="loaderImage2" class="loader"></div>
+
+                                    </a>
+
+                                    <div class="card-body">
+
+                                        <div class="tag-container">
+
+                                            <div class="sub-tag">
+                                                <p style="  white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display:block;"
+                                                    class="card-text">{{ video.channel}}</p>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </li>
+                    {% endfor %} {% else %}
+                    <p>No polls are available.</p>
+                    {% endif %}
+
+                </ul>
+                <div class="slider-nav-container">
+                    <div class="slider-nav">
+                        <div class="e-prev-arrow"></div>
+                        <div class="e-next-arrow"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- End Board Arrivals of the Month -->
+        {%endfor%}
+
+    </div>
+
+
+
+    <script>
+
+        $(".vid").on("click", function () {
+
+            val = $(this).attr('value')
+
+            const proxyurl = "https://cors-anywhere.herokuapp.com/";
+            const url = val
+
+            audioFileUrl = proxyurl + url
+
+            var a = document.createElement("a")
+            a.href = url;
+            a.src = url;
+            // a. width="320";
+            // a.height="240";
+            a.controls = "";
+            a.setAttribute("controls", "");
+            a.type = "video/ogg";
+            a.setAttribute("data-lity", "");
+            a.setAttribute("width", "100%");
+            a.setAttribute("height", "100%");
+            document.body.appendChild(a);
+
+            a.click();
+
+
+
+        });
+
+
+    </script>
+
+    {% endblock content %}

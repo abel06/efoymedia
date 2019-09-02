@@ -1,0 +1,317 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% load mathfilters %}
+{% load custom_tags %}
+{%load static%}
+{% load sass_tags %}
+
+{% block head_css_site %}
+<link href="{% sass_src 'assets/styles/styles.scss' %}" rel="stylesheet" type="text/css" />
+<link href="{% sass_src 'assets/styles/loader.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock head_css_site %}
+
+{% block content %}
+<div class="content-wrapper-hp">
+
+    <div class="content-limiter">
+        {% include 'slider.html' with tops_of_the_week=tops_of_the_week %}
+        {%for data in data_list%}
+        <div class="row movie-list">
+            {% if data.video_list%}
+
+            {% for video in data.video_list %}
+            <div class="p-1 col-6 col-sm-4 col-md-3 col-lg-2 vid ">
+                <div class="single-vid-container ">
+
+                    <div class="card" style="background:transparent;">
+                        <a class="vid" value="{{video.videoId}}" style="cursor:pointer;">
+
+                            <img src="{{ video.thumbnailsHigh}}" class="card-img-top">
+                            <div class="loaderImage2" class="loader"></div>
+                        </a>
+                        <div class="card-body" style="padding:0px">
+
+
+                            <div class="tag-container">
+                                <div class="tag">
+                                    <h3>{{ video.title|safe }}</h3>
+
+                                </div>
+
+                                <!--<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+                                <div class="sub-tag">
+                                    <p class="card-text">{{ video.channel}}</p>
+                                </div>
+                            </div>
+                            <p class="card-text"><small class="text-muted">
+                                    {%if video.view_count >= 1000000000  %}
+                                    {{ video.view_count|intdiv:"1000000000" }}<a style="color:red">ቢ</a>
+
+                                    {%elif video.view_count >= 1000000  %}
+                                    {{ video.view_count|intdiv:"1000000" }}<a style="color:red">ሚ</a>
+                                    {%elif video.view_count >= 1000  %}
+                                    {{ video.view_count|intdiv:"1000" }}<a style="color:red">ሺ</a>
+                                    {% else %}
+                                    {{video.view_count}}
+                                    {% endif %}
+
+                                    {%if video.view_count < 2%}
+                                    የመጀመሪያው ይሁኑ
+                                    {% else %}
+                                    ጊዜ ታይቷል
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    {%endif%}
+                                    </br>
+                                    {{ video.publishedAt|timesince|split}} ago 🕑</small></p>
+
+                            <div class="download" style="display:inline;">
+                                <input type="hidden" class="custId" value="{{video.url}}">
+                                <div class="download-cl" style="position:relative;float: left;">Download </div>
+                                <img class="loaderImage" src="{% static 'assets/images/ajax-loader.gif' %}"
+                                    style="display:none;height:20px;width:20px;">
+                                <p class="percent"
+                                    style="color:#e60101;padding-left: 5px;position: relative;float: left;display: inline;height: 5px;">
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+            {%endif%}
+        </div>
+        {%endfor%}
+
+    </div>
+
+</div>
+
+
+{% endblock content %}
+{%block paging%}
+<div class="content-limiter">
+    <nav aria-label="Page navigation example" style="padding-top:1rem;">
+        <ul class="pagination justify-content-center">
+
+            {%for data in data_list%}
+
+            {% if data.video_list.has_other_pages %}
+
+            {% if data.video_list.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ data.video_list.previous_page_number }}"><i
+                        class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+            {% else %}
+            <li class="page-item disabled"><span class="page-link"><i class="fa fa-chevron-left"
+                        aria-hidden="true"></i></span></li>
+            {% endif %}
+
+            {% if data.video_list.number|add:'-4' > 1 %}
+            <li class="page-item"><a class="page-link" href="?page={{ data.video_list.number|add:'-5' }}">&hellip;</a>
+            </li>
+            {% endif %}
+
+            {% for i in data.video_list.paginator.page_range %}
+            {% if data.video_list.number == i %}
+            <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+            </li>
+            {% elif i > data.video_list.number|add:'0' and i < data.video_list.number|add:'5' %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if data.video_list.paginator.num_pages > data.video_list.number|add:'4' %}
+            <li class="page-item"><a class="page-link" href="?page={{ data.video_list.number|add:'5' }}">&hellip;</a>
+            </li>
+            {% endif %}
+
+            {% if data.video_list.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ data.video_list.next_page_number }}"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+            {% else %}
+            <li class="page-item disabled"><span class="page-link"><i class="fa fa-chevron-right"
+                        aria-hidden="true"></i></span></li>
+            {% endif %}
+
+            {% endif %}
+            {%endfor%}
+
+        </ul>
+
+    </nav>
+</div>
+
+<script>
+
+
+
+    $(".vid").on("click", function () {
+
+        image = $(this).find(".loaderImage2").css("display", "block");
+        console.log(image)
+
+        video_id = $(this).attr('value')
+        $.ajax({
+            url: "{% url 'download_youtube' %}" + "?download=" + video_id,
+            dataType: 'json',
+            success: function (data) {
+
+                const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                const url = data.filename
+
+                audioFileUrl = proxyurl + url
+
+                var a = document.createElement("a")
+                a.href = url;
+                a.src = url;
+                a.controls = "";
+                a.setAttribute("controls", "");
+                a.type = "video/ogg";
+                a.setAttribute("data-lity", "");
+                document.body.appendChild(a);
+
+                a.click();
+
+                image.css("display", "none");
+            }
+            ,
+            error: function (xhr, status, error) {
+                console.log(error)
+                image.css("display", "none");
+
+            },
+
+        });
+
+    });
+
+
+
+
+
+
+    $(".download").on("click", function () {
+        //$(this).find(".loaderImage").show()
+        var vid_url = $(this).find(".custId").val()
+        var image = $(this).find(".loaderImage")
+        var percent_box = $(this).find(".percent")
+        $this = $(this)
+        image.show()
+        $.ajax({
+            url: "{% url 'download_youtube' %}" + "?download=" + vid_url,
+            dataType: 'json',
+            success: function (data) {
+
+
+                function download(data, filename, type) {
+
+
+
+
+                    var file = new Blob([data], {
+                        type: type
+                    });
+
+                    if (window.navigator.msSaveOrOpenBlob) // IE10+
+                        window.navigator.msSaveOrOpenBlob(file, filename);
+                    else { // Others
+                        var a = document.createElement("a"),
+                            url = URL.createObjectURL(file);
+                        a.href = url;
+                        a.download = filename;
+                        document.body.appendChild(a);
+                        a.click();
+                        setTimeout(function () {
+                            document.body.removeChild(a);
+                            window.URL.revokeObjectURL(url);
+                        }, 0);
+                    }
+                }
+
+
+                var BASE64_MARKER = ';base64,';
+
+                function convertDataURIToBinary(dataURI) {
+                    var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+                    var base64 = dataURI.substring(base64Index);
+                    var raw = window.atob(base64);
+                    var rawLength = raw.length;
+                    var array = new Uint8Array(new ArrayBuffer(rawLength));
+
+                    for (i = 0; i < rawLength; i++) {
+                        array[i] = raw.charCodeAt(i);
+                    }
+                    return array;
+                }
+
+
+                const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                const url = data.filename
+
+                audioFileUrl = proxyurl + url
+
+
+                start()
+
+                async function start() {
+                    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                    const url = data.filename
+
+
+
+                    let response = await fetch(audioFileUrl = proxyurl + url);
+
+                    const reader = response.body.getReader();
+
+                    // Step 2: get total length
+                    const contentLength = +response.headers.get('Content-Length');
+                    const contentType = response.headers.get("Content-Type")
+
+
+                    // Step 3: read the data
+                    let receivedLength = 0; // length at the moment
+                    let chunks = []; // array of received binary chunks (comprises the body)
+                    while (true) {
+                        const {
+                            done,
+                            value
+                        } = await reader.read();
+
+                        if (done) {
+
+                            break;
+                        }
+
+                        chunks.push(value);
+                        receivedLength += value.length;
+
+
+
+                        tmp = ((receivedLength * 100) / contentLength)
+                        percent = tmp.toFixed(2);
+                        percent_box.text(percent + " %")
+
+
+                    }
+
+                    let chunksAll = new Uint8Array(receivedLength); // (4.1)
+                    let position = 0;
+                    for (let chunk of chunks) {
+                        chunksAll.set(chunk, position); // (4.2)
+                        position += chunk.length;
+                    }
+                    download(chunksAll, data.name, contentType)
+                    image.hide()
+                    percent_box.text('')
+                }
+
+
+
+            }
+
+        });
+
+
+    });
+</script>
+{%endblock%}

@@ -1,0 +1,54 @@
+{% load static %}
+{% load custom_tags %}
+{% load mathfilters %}
+{% load sass_tags %}
+{% load humanize %}
+
+{%for video in video_list %}
+<div class="p-1 col-6 col-sm-4 col-md-3 col-lg-2 vid ">
+    <div class="single-vid-container ">
+
+        <div class="card" style="background:transparent;">
+            <a class="vid" value="{{video.videoId}}" style="cursor:pointer;">
+
+                <img style="border: 1px solid #ffffff45;" class="unloaded" 
+                    src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs"
+                    data-src="https://azqpyohthm.cloudimg.io/crop/480x260/webp-lossy-50/{{ video.thumbnailsHigh}}"
+                    class="card-img-top" alt="image not found">
+                <!-- onerror="this.src='https://azqpyohthm.cloudimg.io/crop/480x260/webp-lossy-50/https://d1e4pidl3fu268.cloudfront.net/bd605010-306f-4667-b6b0-3c766b3384ff/mediaproduction.jpg';" -->
+                <div class=".loaderImage2" class="loader"></div>
+            </a>
+            <div class="card-body" style="padding:0px">
+                <div class="tag-container">
+                    <div class="tag">
+                        <h3>{{ video.title|safe }}</h3>
+
+                    </div>
+
+                    <div class="sub-tag">
+                        <p class="card-text">{{ video.channel}}</p>
+                    </div>
+                </div>
+                <p class="card-text"><small>
+                        {{video.view_count_hf}}
+                        ጊዜ ታይቷል
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+
+                        </br>
+                        {{ video.publishedAt|timesince|split}} ago 🕑</small></p>
+
+                <div class="download" style="display:inline;">
+                    <input type="hidden" class="custId" value="{{video.url}}">
+                    <div class="download-cl" style="position:relative;float: left;">Download </div>
+                    <img class="loaderImage" src="{% static 'assets/images/ajax-loader.gif' %}"
+                        style="display:none;height:20px;width:20px;">
+                    <p class="percent"
+                        style="color:#e60101;padding-left: 5px;position: relative;float: left;display: inline;height: 5px;">
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{%endfor%}

@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% load sass_tags %}
+{%load static%}
+{% load custom_tags %}
+{% load mathfilters %}
+
+{% block head_meta %}
+{%with tweet=tweets.0%}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" value="en-US">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:image" content="{{tweet.image}}" width="1200px" height="630px"/>
+<meta property="og:imageWidth" content="1600px" />
+<meta property="og:imageHeight" content="900px" />
+<meta property="og:title" content="{{tweet.tweet}}" />
+<meta property="og:description"  content="{{tweet.tweeter.tweeterName}}"/>
+
+{%endwith%}
+{% endblock head_meta %}
+
+
+{% block head_css_site %}
+<link href="{% sass_src 'assets/styles/blog.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock head_css_site %}
+
+
+
+
+{% block content %}
+<div class="content-wrapper-hp">
+<div class="content-limiter">
+<div class="f-card-container">
+    {%for tweet in tweets%}
+    <div class="f-card">
+        <div class="my-header">
+            <div class="options"><i class="fa fa-chevron-down"></i></div>
+            <a href="{{tweet.tweeter.url}}"><img class="co-logo" src="{{tweet.tweeter.image}}" /></a>
+            <div class="co-name"><a href="{{tweet.tweeter.url}}">{{tweet.tweeter.tweeterName}}</a></div>
+            <div class="time"><a href="#" style="text-transform: lowercase;">{{ tweet.publishedAt|timesince|split}}</a> · <i class="fa fa-globe"></i></div>
+        </div>
+        <div class="content">
+            <p  class="custom">{{tweet.fullTweet|safe}} See More</p>
+        </div>
+
+        {%if tweet.image%}
+        <div class="reference">
+            <img class="reference-thumb" src="{{tweet.image}}" />
+            <div class="reference-content">
+                <!-- <div class="reference-title">A quick and simple image placeholder service. | PLACEHOLDER.it</div>
+            <div class="reference-subtitle">How does it work? Just put your image size after our URL and you'll get a
+                placeholder.</div> -->
+                <div class="reference-font" style="text-transform: lowercase;">{{tweet.publishedAt}}</div>
+            </div>
+        </div>
+        {%endif%}
+        <div class="social">
+            <div class="social-content"></div>
+            <div class="social-buttons">
+                <span><i class="fa fa-thumbs-up"></i>Like</span>
+                <span><i class="fa fa-comment"></i>Comment</span>
+                <span><i class="fa fa-share"></i><a href="https://www.facebook.com/sharer.php?u={{tweet.redirect_url}}" style="text-decoration: none;color: #7f7f7f;">Share</a></span>
+                <!--<a href="https://twitter.com/intent/tweet?text={{tweet.tweet}}&url={{tweet.image|safe}}"><i></i><span class="label" id="l">Tweet</span></a>-->
+
+
+                </div>
+        </div>
+    </div>
+
+
+    {%endfor%}
+</div>
+</div>
+</div>
+{%endblock content%}
+
+{%block paging%}
+<div class="content-limiter">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+
+
+
+            {% if tweets.has_other_pages %}
+
+                {% if tweets.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ tweets.previous_page_number }}"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+                {% else %}
+                    <li class="page-item disabled"><span class="page-link"><i class="fa fa-chevron-left" aria-hidden="true"></i></span></li>
+                {% endif %}
+
+                {% if tweets.number|add:'-4' > 1 %}
+                    <li class="page-item"><a class="page-link" href="?page={{ tweets.number|add:'-5' }}">&hellip;</a></li>
+                {% endif %}
+
+                {% for i in tweets.paginator.page_range %}
+                    {% if tweets.number == i %}
+                        <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% elif i > tweets.number|add:'0' and i < tweets|add:'5' %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if tweets.paginator.num_pages > tweets.number|add:'4' %}
+                    <li class="page-item"><a class="page-link" href="?page={{ tweets.number|add:'5' }}">&hellip;</a></li>
+                {% endif %}
+
+                {% if tweets.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ tweets.next_page_number }}"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+                {% else %}
+                    <li class="page-item disabled"><span class="page-link"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>
+                {% endif %}
+
+                {% endif %}
+
+
+            </ul>
+
+    </nav>
+    </div>
+    <script>
+        var isAjaxCalled= false;
+$(window).scroll(function(){
+if (($(window).scrollTop() >= ($(document).height() - $(window).height())*0.2) && !isAjaxCalled){
+isAjaxCalled= true;
+    sendajax();
+
+}
+});
+
+function sendajax(){
+    console.log("ajax called   "+"{% url 'blog_view' %}" + "?page=" + 2)
+    $.ajax({
+        url: "{% url 'blog_view' %}" + "?page=" + 2,
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+
+
+        }
+    });}
+
+    </script>
+{%endblock paging%}

@@ -1,0 +1,215 @@
+$bgDefault :#e60101;
+.movie-list {
+    padding-left: 1.5rem;
+    padding-top: 1rem;
+    width: 100%;
+    .item .name {
+        background: $bgDefault !important
+    }
+    .vid-container {
+        color: $bgDefault;
+        @media(max-width: 575px) {
+            width:100%
+        }
+        @media(min-width:576px) and (max-width:767px) {
+            width: 50%
+        }
+        @media(min-width:768px) and (max-width:991px) {
+            width: 30%
+        }
+        @media(min-width:992px) and (max-width:1199px) {
+            width: 25%
+        }
+        @media(min-width:1200px) {
+            width: 20%
+        }
+    }
+}
+
+.single-vid {
+    width: 100%;
+    height: 100%;
+    background: yellow;
+    img {
+        width: 100%;
+        height: 100%;
+
+    }
+    .capn {
+        height: 70px;
+        width: 100%;
+        background: blue
+    }
+}
+
+.vid-list {
+    padding: 2rem;
+    .vid {
+        padding: 1rem
+    }
+}
+
+.slider-single-vid-container {
+    .single-vid-container {
+        padding: .5rem
+    }
+}
+
+.single-vid-container {
+
+    position: relative;
+    padding-bottom: 1.5rem;
+
+
+    .video-grid-blockn {
+        &:hover {
+            &:after {
+                content: "";
+                font-family: FontAwesome;
+                font-size: 1.2rem;
+                color: #fff;
+                position: absolute;
+                left: 50%;
+                top: 25%;
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                display: block;
+                text-align: center;
+                height: 3rem;
+                line-height: 48px;
+                width: 3rem;
+                z-index: 5;
+                border: 3px solid #fff;
+                border-radius: 50%;
+                color: white
+            }
+        }
+    }
+    .video-grid-blockm:after {
+        content: "";
+        font-family: FontAwesome;
+        font-size: 1.2rem;
+        color: #fff;
+        position: absolute;
+        left: 50%;
+        top: 25%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        display: block;
+        text-align: center;
+        height: 3rem;
+        line-height: 48px;
+        width: 3rem;
+        z-index: 5;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        background: linear-gradient(to right, #10aed8 15%, #090a35 41%, #3774bf 100%);
+        color: white
+    }
+    img {
+        width: 100%;
+        height:100%;
+    }
+    .quality {
+        position: relative;
+        top: 30px;
+        right: 5px;
+        z-index: 1;
+        padding-left: 2px;
+        padding-right: 2px;
+        color: #fff;
+        width: max-content;
+        float: right
+    }
+    .tag-container {
+        .tag {
+            width: 100%;
+            text-overflow: ellipsis;
+            height: 55px;
+            h3 {
+                font-size: 1.4rem;
+                line-height: 1.6rem;
+                height: 3.2rem;
+                text-decoration: none;
+                color: #fff;
+                overflow: hidden;
+                text-overflow: ellipsis
+            }
+        }
+        .sub-tag {
+            p {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                color: #6c757d
+            }
+        }
+        .view-count {
+            height: 1.5rem;
+            padding-left: .2rem;
+            padding-right: .2rem;
+            border-radius: 2px;
+            font-size: 15px;
+            padding-bottom: 1px;
+            color: #606060;
+            a {
+                color: black !important
+            }
+            .attr {
+                background: white;
+                color: $bgDefault !important;
+                font-size: 14px;
+                border-radius: 1px;
+                padding: 1px
+            }
+        }
+        .date {
+            border-radius: 2px;
+            font-size: 14px;
+            padding-bottom: 1px;
+            color: #606060
+        }
+
+    }
+}
+
+.my-container {
+    margin-left: 1rem;
+    margin-right: 1rem
+}
+
+.body {
+    background-color: #213031
+}
+
+.logo {
+    width: 100%;
+    height: 158px;
+    .title {
+        a {
+            font-family: 'Black Ops One';
+            font-size: 5rem;
+            color: #287ba7 !important;
+            padding-left: 3.5rem
+        }
+    }
+    .sub-title {
+        background: #ffc90e;
+        height: 50px;
+        a {
+            font-family: 'Coiny', cursive;
+            font-size: 1.5rem;
+            color: #287ba7 !important;
+            padding-left: 1rem;
+            text-transform: none
+        }
+    }
+}
+.card-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

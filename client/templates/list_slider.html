@@ -1,0 +1,32 @@
+{% load sass_tags %}
+{% load mathfilters %}
+
+{% load custom_tags %}
+{%load static%}
+
+{%block slider%}
+
+<div class="slider">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="{{video.url}}" data-lity>
+                    <img src="https://img.youtube.com/vi/{{video.videoId}}/maxresdefault.jpg" class="d-block w-100"></a>
+                <div class="caption-container">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>{{ video.title|safe }}</h1>
+                        <h3>Top {{ video.category }} of the week</h3>
+                        <h3>
+
+                            ጊዜ ታይቷል
+                            {%endif%}</h3>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+{%endblock%}
